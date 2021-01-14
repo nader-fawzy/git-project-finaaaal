@@ -15,21 +15,27 @@ enum SEMESTER
 	SEM_CNT	//number of semesters 
 };
 
-
+struct sem {
+	SEMESTER s;
+	int year;
+};
 //All possible actions
 enum ActionType
 {
 	ADD_CRS,	//Add a course to study plan
 	DEL_CRS,	//Delete a course from study plan
-	CHANGE_COURSE_CODE,
-	DISPLAY_COURSE_INFO,
+
+
 	SAVE,		//Save a study plan to file
 	LOAD,		//Load a study plan from a file
-
+	DELETE_COURSE,
 	UNDO,		//Undo the last Action preformed
 	REDO,		//Redo the last Action canceled
-	NOTE,
-	CALC_GPA,
+	NOTES,
+	DISPLAY_COURSE_INFO,
+	CALCULATE_GPA,
+	CHANGE_COURSE_CODE,
+	REORDER_COURSES,
 	EXIT,		//Exit the application
 
 	STATUS_BAR,	//A click on the status bar

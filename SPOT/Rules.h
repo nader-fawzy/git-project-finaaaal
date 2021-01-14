@@ -34,18 +34,6 @@ struct AcademicYearOfferings
 struct Rules	//contains all objects for registrations rules
 {
 	//TODO: add more fields if needed
-	int TotalCr;
-	int University_CompulsoryCr;
-	int University_ElectiveCr;
-	int Track_CompulsoryCr;
-	//int Major_Commom_CompulsoryCr;
-	//int Major_Commom_ElectiveCr;
-	int Number_Of_Concentrations;
-	//int Major_Concentration1_CompulsoryCr;
-	int Major_Concentration1_ElectiveCr;
-
-	vector<int>Major_Concentration_CompulsoryCr;
-	vector<int>Major_Concentration_ElectiveCr;
 
 	vector<CourseInfo> CourseCatalog;	//List of ALL courses with full info
 	vector<AcademicYearOfferings> OffringsList;	//all offerings for all acedmic years

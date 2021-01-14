@@ -3,8 +3,7 @@
 class ActionReorderCourses : public Action
 {
 public:
-	ActionReorderCourses(Registrar *);
-	void swapFunction(double *PointerOnFirstCourse, double *PointerOnSecCourse);
+	ActionReorderCourses(Registrar*);
 	bool Execute();
 	virtual ~ActionReorderCourses();
 };

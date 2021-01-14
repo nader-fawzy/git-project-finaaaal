@@ -1,9 +1,6 @@
 #include "ActionCalculateGPA.h"
-#include "../SPOT/Registrar.h"
-#include "../SPOT/Courses/UnivCourse.h"
-#include "../SPOT/Actions/Action.h"
+#include "Registrar.h"
 #include <iostream>
-#include <string>
 #include <sstream>
 ActionCalculateGPA::ActionCalculateGPA(Registrar* p) :Action(p) {
 
@@ -11,76 +8,90 @@ ActionCalculateGPA::ActionCalculateGPA(Registrar* p) :Action(p) {
 bool ActionCalculateGPA::Execute() {
 	GUI* pGUI = pReg->getGUI();
 	ActionData actData = pGUI->GetUserAction("Enter number of courses to calculate the GPA: ");
-	//TODO: add input validation
-	/*int x_plan, y_plan;
-	if (actData.actType == DRAW_AREA)	//user clicked inside drawing area
-	{
-		//get coord where user clicked
-		x_plan = actData.x;
-		y_plan = actData.y;
-		graphicsInfo gInfo{ x_plan, y_plan };
-	}*/
 	string get_num_of_courses = pGUI->GetSrting();
 	int num_of_courses;
-	istringstream(get_num_of_courses) >> num_of_courses;  //string -> int and put it in num_of_courses 
-	CourseInfo* Course_data_credits; //to get credits of the course entered by the user
-	Course_Code course_code_entered;
-	int credits_of_course;
-	double result, Final_GPA, totalResult=0;
-	
+	istringstream(get_num_of_courses) >> num_of_courses;
+	double result = 0, TotalCreditsOfCourses = 0, TotalResult = 0;
 	for (int num = 0; num < num_of_courses; num++) {
-		pGUI->PrintMsg("Enter the course name: ");
-		course_code_entered = pGUI->GetSrting(); //get course code name
-		Course_data_credits = pReg->getcourseinfo(course_code_entered); //check if the course is in the course catalog and return its data
-		//credits_of_course = Course_data_credits->Credits;
-		pGUI->PrintMsg("Enter the course grade: ");
-		string grades = pGUI->GetSrting();
-		if (grades == "A") {
-			result = 4;
+		ActionData actData = pGUI->GetUserAction("press on course you want to calculate it's GPA: ");
+		int x_point, y_point;
+		if (actData.actType == DRAW_AREA) {
+			//get coord where user clicked
+			x_point = actData.x;
+			y_point = actData.y;
+			StudyPlan* pS = pReg->getStudyPlay();
+			int yearof_course = pS->setYearSem(x_point);
+			SEMESTER SEM = pS->Sem(x_point);
+			Course* PointerOnCourse = pS->DetectCourse(x_point, y_point, yearof_course, SEM);  //detect position of the course selected
+			//calc GPA 
+			
+			if (PointerOnCourse != nullptr) {
+				int creditsOFcourse = PointerOnCourse->getCredits();
+				pGUI->PrintMsg("Enter Grade of the course: ");
+				string grades = pGUI->GetSrting();
+				
+				if (grades == "A" || grades == "a") {
+					result = 4* creditsOFcourse;
+				}
+				else if (grades == "A-" || grades == "a-") {
+					result = 3.7 * creditsOFcourse;
+				}
+				else if (grades == "B+" || grades == "b+") {
+					result = 3.3 * creditsOFcourse;
+				}
+				else if (grades == "B" || grades == "b") {
+					result = 3 * creditsOFcourse;
+				}
+				else if (grades == "B-" || grades == "b-") {
+					result = 2.7 * creditsOFcourse;
+				}
+				else if (grades == "C+" || grades == "c+") {
+					result = 2.3 * creditsOFcourse;
+				}
+				else if (grades == "C" || grades == "c") {
+					result = 2 * creditsOFcourse;
+				}
+				else if (grades == "C-" || grades == "c-") {
+					result = 1.7 * creditsOFcourse;
+				}
+				else if (grades == "D+" || grades == "d+") {
+					result = 1.3 * creditsOFcourse;
+				}
+				else if (grades == "D" || grades == "d") {
+					result = 1 * creditsOFcourse;
+				}
+				else if (grades == "D-" || grades == "d-") {
+					result = 0.7 * creditsOFcourse;
+				}
+				else if (grades == "F" || grades == "f") {
+					result = 0 * creditsOFcourse;
+				}
+				else {
+					pGUI->PrintMsg("invalid input..press enter to continue");
+					Course_Code invalidMsg = pGUI->GetSrting();
+				}
+				TotalCreditsOfCourses += creditsOFcourse;
+				TotalResult += result;
+			}
+			else {
+				pGUI->PrintMsg("Empty area... press enter to continue");
+				Course_Code enter = pGUI->GetSrting();
+
+			}
+			
+			
 		}
-		else if (grades == "A-") {
-			result = 3.7;
-		}
-		else if (grades == "B+") {
-			result = 3.3;
-		}
-		else if (grades == "B") {
-			result = 3;
-		}
-		else if (grades == "B-") {
-			result = 2.7;
-		}
-		else if (grades == "C+") {
-			result = 2.3;
-		}
-		else if (grades == "C") {
-			result = 2;
-		}
-		else if (grades == "C-") {
-			result = 1.7;
-		}
-		else if (grades == "D+") {
-			result = 1.3;
-		}
-		else if (grades == "D") {
-			result = 1;
-		}
-		else if (grades == "D-") {
-			result = 0.7;
-		}
-		else if (grades == "F") {
-			result = 0;
-		}
-		else {
-			pGUI->PrintMsg("invalid input");
-		}
-		totalResult += result;
-	}
-	pGUI->PrintMsg("Final GPA is: ");
+		
 	
-	Final_GPA = totalResult / num_of_courses;
-	string Calculated_GPA= to_string(Final_GPA);
-	pGUI->PrintMsg(Calculated_GPA);
+	}
+	
+	double GPA = TotalResult / TotalCreditsOfCourses;
+	if (GPA >=0 && GPA <= 4) {
+		string StringGPA = to_string(GPA);
+		pGUI->PrintMsg("Total GPA is: " + StringGPA + "  press enter to continue");
+		Course_Code enter = pGUI->GetSrting();
+	}
+	
 	return true;
 }
 ActionCalculateGPA::~ActionCalculateGPA() {

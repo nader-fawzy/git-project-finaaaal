@@ -1,15 +1,4 @@
 #include "StudyPlan.h"
-#include "AcademicYear.h"
-//#include "../Registrar.h"
-#include <fstream>
-#include<sstream>
-#include<string>
-#include<iostream>
-#include<vector>
-#include "../Rules.h"
-#include "..\Actions\Action.h"
-
-using namespace std;
 
 
 
@@ -38,88 +27,121 @@ void StudyPlan::DrawMe(GUI* pGUI) const
 	for (int i = 0; i < plan.size(); i++)
 		plan[i]->DrawMe(pGUI);
 }
+//delete course
+bool StudyPlan::DeleteCourse(int x_point,int y_point, int years, SEMESTER SEMs) {
+	//int* point = nullptr;
+	//for (int i = 0; i <= 4; i++) {
+		return plan[years-1]->actiondeletecourse(x_point, y_point, SEMs);  //plan is list of academic years,
+		/*if (point != nullptr) {
+			return true;
+			break;
+		}*/
+	//}
+	return true;
+}
+
+Course* StudyPlan::DetectCourse(int x_point, int y_point, int year, SEMESTER sem) {
+	Course* pointPointer = nullptr;
+	pointPointer = plan[year-1]->DetectPositionOfCourse(x_point, y_point, sem);
+	if (pointPointer != nullptr) {
+		return pointPointer;
+	}
+	else
+	{
+		return pointPointer;
+	}
+	
+}
+
+int StudyPlan::setYearSem(int x) {
+	int year;
+	if (x > 0 && x < 270) { //year
+			year = 1;
+			return year;
+	}
+	if (x>270 && x < 540) {
+		year = 2;
+		return year;
+	}
+	if (x > 540 && x < 810) {
+		year = 3;
+		return year;
+	}
+	if (x > 810 && x <1080 ) {
+		year = 4;
+		return year;
+	}
+	if (x > 1080 && x <1350) {
+		year = 5;
+		return year;
+	}
+}
+SEMESTER StudyPlan::Sem(int x) {
+	SEMESTER SS;
+	if (x > 0 && x < 90) { //sem
+		SS = FALL;
+		return SS;
+	}
+	if (x > 90 && x < 180) {
+		SS = SPRING;
+		return SS;
+	}
+	if (x > 180 && x < 270) {
+		SS = SUMMER;
+		return SS;
+	}
+	if (x > 270 && x < 360) {
+		SS = FALL;
+		return SS;
+	}
+	if (x > 360 && x < 450) {
+		SS = SPRING;
+		return SS;
+	}
+	if (x > 450 && x < 540) {
+		SS = SUMMER;
+		return SS;
+	}
+	if (x > 540 && x < 630) {
+		SS = FALL;
+		return SS;
+	}
+	if (x > 630 && x < 720) {
+		SS = SPRING;
+		return SS;
+	}
+	if (x > 720 && x < 810) {
+		SS = SUMMER;
+		return SS;
+	}
+	if (x > 810 && x < 900) {
+		SS = FALL;
+		return SS;
+	}
+	if (x > 900 && x < 990) {
+		SS = SPRING;
+		return SS;
+	}
+	if (x > 990 && x < 1080) {
+		SS = SUMMER;
+		return SS;
+	}
+	if (x > 1080 && x <1170) {
+		SS = FALL;
+		return SS;
+	}
+	if (x > 1170 && x < 1260) {
+		SS = SPRING;
+		return SS;
+	}
+	if (x > 1260 && x < 1350) {
+		SS = SUMMER;
+		return SS;
+	}
+
+}
+
 
 StudyPlan::~StudyPlan()
 {
-}
-
-/*void StudyPlan::studyplan(string filename, Registrar* file) // function to import study plan //load studyplan
-{
-	fstream studyplan;
-	studyplan.open(filename);
-
-	Studyplan year1;
-	string data;
-	string year;
-	string semster;
-	string tempyearcourses;
-	string yearcourses_part;
-	 
-	while (getline(studyplan, data));    //to loop the data in lines of the txt file
-	{  stringstream ss(data);
-	getline(ss, year, ' ');
-	getline(ss, year, ',');
-	int y = stoi(year);          //function to store an integer as a string
-	getline(ss, semster, ',');
-	SEMESTER sem;                       //enum semster
-	if (semster == "Fall" )  //in file  
-	{
-	    sem = FALL;     //in enum 
-	}
-	else if (semster == "Spring") { sem = SPRING; }
-	else sem = SUMMER;
-	while (getline(ss, yearcourses_part, ','))
-
-	{
-		CourseInfo* temp = file->getcourseinfo(yearcourses_part);
-		if (temp) {
-			Course* pC = new Course(temp->Code, temp->Title, temp->Credits);
-			AddCourse(pC, y, sem);
-		}
-
-	}
-
-	CourseInfo* temp = file->getcourseinfo(ss.string());
-	if (temp) {
-		Course* pC = new Course(temp->Code, temp->Title, temp->Credits);
-		AddCourse(pC, y, sem);
-	}
-
-	}
-
-
-}*/
-
-
-double* StudyPlan::DeleteCourse(double x_point, double y_point) {
-	double* point = NULL;
-	for (int i = 0; i < 5; ++i) {
-		point = plan[i]->actiondeletecourse(x_point, y_point);  //plan is list of academic years,
-		if (point != NULL) {
-			return point;
-			break;
-		}
-	}
-	return point;
-}
-double* StudyPlan::DetectCourse(double x_point, double y_point) {
-	double* pointPointer = NULL;
-	for (int n = 0; n < 5; ++n) {
-		pointPointer = plan[n]->DetectPositionOfCourse(x_point, y_point);
-		if (pointPointer != NULL) {
-			return pointPointer;
-			break;
-		}
-		
-	}
-}
-double* StudyPlan::Detect_Course(double xpoint, double ypoint) {
-	double* pointPointer = NULL;
-	for (int n = 0; n < 5; ++n) {
-		pointPointer = plan[n]->Detect_Position_Of_Course(xpoint, ypoint);
-		if (pointPointer != NULL) {
-			return pointPointer;
-			break;
-		}
-	}
 }

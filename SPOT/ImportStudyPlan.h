@@ -1,8 +1,7 @@
 #pragma once
 //#include "Action.h"
 #include"Registrar.h"
-class ImportStudyPlan :
-	public Action
+class ImportStudyPlan : public Action
 {
 public:
 	ImportStudyPlan(Registrar*);

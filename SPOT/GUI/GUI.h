@@ -10,35 +10,37 @@ class AcademicYear;
 //user interface class
 class GUI
 {
-	
+
 	enum MENU_ITEM //The items of the menu (you should add more items)
 	{
 		//Note: Items are ordered here as they appear in the menu
 		//If you want to change the menu items order, just change the order here
 		ITM_ADD,		//Add a new course
-		ITM_DELETE,  //Delete course
-		ITM_NOTES,
-		//ITM_LOAD, 
-		//ITM_SAVE,
-		//ITM_UNDO,
-		ITM_REDO,
-		ITM_LOAD,
-		ITM_CHANGE_COURSE_CODE,
+		ITM_DELETE,
+		ITM_LOAD_STUDY_PLAN,
+		ITM_ADD_NOTES,
+		ITM_CALCULATE_GPA,
 		ITM_DISPLAY_COURSE_INFO,
-		ITM_CALC_GPA,
-		//TODO: Add more items names here
+		ITM_CHANGE_COURSE_CODE,
+		ITM_REORDER_COURSES,
+						//TODO: Add more items names here
+
+
 		ITM_EXIT,		//Exit item
+
 		ITM_CNT			//no. of menu items ==> This should be the last line in this enum
 
 	};
 
 	//Some constants for GUI
-	static const int	WindWidth = 1300, WindHeight = 700,	//Window width and height
+	static const int	WindWidth = 1400, WindHeight = 700,	//Window width and height
 		wx = 15, wy = 15,		//Window starting coordinates
 		StatusBarHeight = 60,	//Status Bar Height
 		MenuBarHeight = 80,		//Menu Bar Height (distance from top of window to bottom line of menu bar)
-		MenuItemWidth = 70;		//Width of each item in the menu
-
+		MenuItemWidth = 70,
+		YearWidth = 1350,
+		SemWidth = 90;		//Width of each item in the menu
+	    
 
 
 	color DrawColor = BLACK;		//Drawing color
@@ -67,6 +69,7 @@ public:
 	
 	//input functions
 	ActionData GUI::GetUserAction(string msg = "") const;
+	sem getYEARandSEM(int x, int y);
 	string GetSrting() const;
 
 

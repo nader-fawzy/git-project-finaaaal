@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -122,7 +122,6 @@
     <ClCompile Include="ActionAddNotes.cpp" />
     <ClCompile Include="ActionCalculateGPA.cpp" />
     <ClCompile Include="ActionChangeCourseCode.cpp" />
-    <ClCompile Include="ActionChecks.cpp" />
     <ClCompile Include="ActionDeleteCourse.cpp" />
     <ClCompile Include="ActionReorderCourses.cpp" />
     <ClCompile Include="Actions\ActionAddCourse.cpp" />
@@ -166,7 +165,6 @@
     <ClCompile Include="GUI\Drawable.cpp" />
     <ClCompile Include="GUI\GUI.cpp" />
     <ClCompile Include="ImportStudyPlan.cpp" />
-    <ClCompile Include="loadstudyplan.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Registrar.cpp" />
     <ClCompile Include="StudyPlan\AcademicYear.cpp" />
@@ -176,7 +174,6 @@
     <ClInclude Include="ActionAddNotes.h" />
     <ClInclude Include="ActionCalculateGPA.h" />
     <ClInclude Include="ActionChangeCourseCode.h" />
-    <ClInclude Include="ActionChecks.h" />
     <ClInclude Include="ActionDeleteCourse.h" />
     <ClInclude Include="ActionReorderCourses.h" />
     <ClInclude Include="Actions\Action.h" />
@@ -206,7 +203,6 @@
     <ClInclude Include="GUI\GUI.h" />
     <ClInclude Include="DEFs.h" />
     <ClInclude Include="ImportStudyPlan.h" />
-    <ClInclude Include="loadstudyplan.h" />
     <ClInclude Include="Registrar.h" />
     <ClInclude Include="Rules.h" />
     <ClInclude Include="StudyPlan\AcademicYear.h" />

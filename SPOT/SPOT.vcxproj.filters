@@ -143,38 +143,35 @@
     <ClCompile Include="GUI\Drawable.cpp">
       <Filter>GUI</Filter>
     </ClCompile>
+    <ClCompile Include="StudyPlan\AcademicYear.cpp">
+      <Filter>StudyPlan</Filter>
+    </ClCompile>
+    <ClCompile Include="ImportStudyPlan.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
     <ClCompile Include="ActionAddNotes.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-    <ClCompile Include="ActionChangeCourseCode.cpp">
+    <ClCompile Include="ActionReorderCourses.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
     <ClCompile Include="ActionDeleteCourse.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-    <ClCompile Include="StudyPlan\AcademicYear.cpp">
-      <Filter>StudyPlan</Filter>
-    </ClCompile>
-    <ClCompile Include="ActionReorderCourses.cpp">
+    <ClCompile Include="ActionChangeCourseCode.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
     <ClCompile Include="DisplayCourseInfo.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-    <ClCompile Include="loadstudyplan.cpp">
-      <Filter>Actions</Filter>
-    </ClCompile>
-    <ClCompile Include="ActionCalculateGPA.cpp">
-      <Filter>Actions</Filter>
-    </ClCompile>
-    <ClCompile Include="ActionChecks.cpp" />
-    <ClCompile Include="ImportStudyPlan.cpp">
-      <Filter>Actions</Filter>
-    </ClCompile>
+    <ClCompile Include="ActionCalculateGPA.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GUI\GUI.h">
       <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Courses\Course.h">
+      <Filter>Courses</Filter>
     </ClInclude>
     <ClInclude Include="Registrar.h" />
     <ClInclude Include="StudyPlan\StudyPlan.h">
@@ -251,34 +248,25 @@
     <ClInclude Include="StudyPlan\AcademicYear.h">
       <Filter>StudyPlan</Filter>
     </ClInclude>
+    <ClInclude Include="ImportStudyPlan.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
     <ClInclude Include="ActionAddNotes.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="ActionChangeCourseCode.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="Courses\Course.h">
-      <Filter>Courses</Filter>
-    </ClInclude>
-    <ClInclude Include="ActionDeleteCourse.h">
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="ActionReorderCourses.h">
       <Filter>Actions</Filter>
     </ClInclude>
+    <ClInclude Include="ActionDeleteCourse.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionChangeCourseCode.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
     <ClInclude Include="DisplayCourseInfo.h">
       <Filter>Actions</Filter>
     </ClInclude>
-    <ClInclude Include="loadstudyplan.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="ActionCalculateGPA.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="ActionChecks.h" />
-    <ClInclude Include="ImportStudyPlan.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
+    <ClInclude Include="ActionCalculateGPA.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="GUI\CMUgraphicsLib\Manual.txt">

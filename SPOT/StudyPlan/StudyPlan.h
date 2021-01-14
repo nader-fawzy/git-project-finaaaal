@@ -2,16 +2,8 @@
 #include <vector>
 #include "AcademicYear.h"
 #include "../GUI/Drawable.h"
-//#include "../Registrar.h"
 
 //A full study plan for as student
-struct Studyplan
-{
-	string year;
-	string semster;
-	vector <string> listofcoursecodes;
-
-};
 class StudyPlan:public Drawable
 {
 	int TotalCredits=0;		//total no. of credit hours for courses registred in this year
@@ -19,18 +11,18 @@ class StudyPlan:public Drawable
 		TotalTrackCredits=0, TotalConcentrationCredits=0,
 		TotalMinorCredits=0;
 
-	
 	vector<AcademicYear*> plan;	//plan is a list of academic years
+
 	string PlanNotes;
 public:
-	
-	double* DeleteCourse(double x_point, double y_point);
-	double* DetectCourse(double x_point, double y_point);
-	double* Detect_Course(double xpoint, double ypoint);
 	StudyPlan();
-	//void studyplan(string filename, Registrar* file);
 	bool AddCourse(Course*, int year, SEMESTER);
 	void virtual DrawMe(GUI*) const;
+	bool DeleteCourse(int x_point, int y_point, int years, SEMESTER SEMs); //delete course
+	Course* DetectCourse(int x_point, int y_point, int year, SEMESTER sem); //detect course position
+	int setYearSem(int x);
+	SEMESTER Sem(int x);
+	/*bool add_course(Course* code, int year, SEMESTER sem);*/
 	virtual ~StudyPlan();
 };
 

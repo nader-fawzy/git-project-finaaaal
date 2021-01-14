@@ -17,15 +17,16 @@ class AcademicYear:public Drawable
 	//So YearCourses[SPRING] is the list of SPRING course in that year
 	//So YearCourses[SUMMER] is the list of SUMMER course in that year
 	list<Course*> YearCourses[SEM_CNT];
-	
-	
+	list<Course*> ::iterator ITERATOR;
+	list <Course*>::iterator iter;
 public:
 	AcademicYear();
 	virtual ~AcademicYear();
-	bool AddCourse(Course* pC, SEMESTER sem);
-	double* actiondeletecourse(double x_point, double y_point);
-	double* DetectPositionOfCourse(double x_point, double y_point);
-	double* Detect_Position_Of_Course(double xpoint, double ypoint);
+	bool actiondeletecourse(int x_point, int y_point,SEMESTER SEMs); //detect the course position and delete course
+	Course* DetectPositionOfCourse(int x_point, int y_point, SEMESTER sem); //detect course position
+	bool AddCourse(Course*, SEMESTER );
+	
+
 	void virtual DrawMe(GUI*) const;
 };
 

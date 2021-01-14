@@ -17,16 +17,14 @@ class Course : public Drawable
 	list<Course_Code> PreReq;	//list of prerequisites
 	list<Course_Code> CoReq;	//list of prerequisites
 	double x, y;
-	
 public:
 	Course(Course_Code r_code,string r_title, int crd);
 	string getTitle() const;
 	string getCode() const;
 	int getCredits() const;
-	void setpositionofcourse(double x_point, double y_point);
-	double* getpositionofcourse() const;
+	void setpositionofcourse(double x_point, double y_point);  //set the position of the course 
+	int* getpositionofcourse() const;
 	void DrawMe(GUI*) const;
-	//void setyearsem(int year,SEMESTER sem);
 	virtual ~Course();
 
 };

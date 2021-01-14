@@ -4,7 +4,7 @@
 class ActionAddNotes : public Action
 {
 public:
-	ActionAddNotes(Registrar *);
+	ActionAddNotes(Registrar*);
 	bool Execute();
 	virtual ~ActionAddNotes();
 };

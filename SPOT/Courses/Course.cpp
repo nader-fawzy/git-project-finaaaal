@@ -30,16 +30,12 @@ void Course::DrawMe(GUI* pG) const
 {
 	pG->DrawCourse(this);
 }
+
 void Course::setpositionofcourse(double x_point, double y_point) { //set position of the rectangle of the course
 	x = x_point;
 	y = y_point;
 }
-double* Course::getpositionofcourse() const { //get position og the rectangle of the course
-	double point[4] = { x , x + 80, y, y + 40 };
+int* Course::getpositionofcourse() const { //get position of the rectangle of the course
+	int point[4] = { x , x + 80, y, y + 40 };
 	return point;
 }
-/*void setyearsem(int year, SEMESTER semester) {
-	//plan[year - 1];
-	//sem = semester;
-
-}*/

@@ -4,12 +4,13 @@
 #include <vector>
 #include <fstream>
 #include "Actions/ActionAddCourse.h"
-#include <iostream>     // std::cout
+#include <iostream>    
 #include <sstream> 
 #include "StudyPlan\AcademicYear.h"
 #include"Actions\Action.h"
 #include"ImportStudyPlan.h"
 using namespace std;
+
 ImportStudyPlan::ImportStudyPlan(Registrar* p) :Action(p)
 {
 }
@@ -23,7 +24,7 @@ bool ImportStudyPlan::Execute()
 	vector <string> courses;
 	vector <string> semesters;
 	fstream file;
-	file.open("files\\CIE-StudyPlan.txt", ios::in);
+	file.open("FILES\\CIE-StudyPlan.txt", ios::in);
 	if (file.fail())
 		return false;
 	else
@@ -112,7 +113,7 @@ bool ImportStudyPlan::Execute()
 				if (t > 2)
 				{
 					courses.push_back(u);
-					switch (year)
+					switch (year) 
 					{
 					case 1:
 						x = 2;
@@ -127,7 +128,7 @@ bool ImportStudyPlan::Execute()
 						x = 812;
 						break;
 					case 5:
-						x = 1082;
+						x = 1082; //initial point and end in (90*3)
 						break;
 					}
 					x = x + 90 * sem;
@@ -138,7 +139,6 @@ bool ImportStudyPlan::Execute()
 					Course* pC = new Course(courses[j], Title, crd);
 					pC->setGfxInfo(gInfo);
 					pC->setpositionofcourse(x, y);
-					//pC->setyearsem(year, semester);
 					StudyPlan* pS = pReg->getStudyPlay();
 					pS->AddCourse(pC, year, semester);
 					j++;
